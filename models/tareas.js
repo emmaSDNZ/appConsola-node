@@ -3,7 +3,9 @@ require('colors')
 
 class Tareas {
 
-    __listado= {}
+    __listado= {
+        'abc': 123
+    }
     
     get listasdoArr(){
 
@@ -18,6 +20,13 @@ class Tareas {
 
     constructor(){
         this.__listado = {};
+    }
+    borrarTarea( id = '' ) {
+
+        if ( this.__listado[id] ) {
+            delete this.__listado[id];
+        }
+
     }
 
     cargarTareasArray ( tareas = [] ){
@@ -37,7 +46,7 @@ class Tareas {
 
         console.log();
         this.listasdoArr.forEach( (tarea, i)=>{
-            const idx = `${i + 1}.green`;
+            const idx = `${i + 1}`.green;
             const { desc, completadoEn } = tarea;
             const estado = (completadoEn) 
                                 ? 'Completodo'.green
